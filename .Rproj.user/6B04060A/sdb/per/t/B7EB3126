@@ -1,0 +1,17 @@
+{
+    "contents" : "# Copyright: Will Schuerman. Monday, October 13, 2014.\n\n# Function to measure identification boundary for see_she_expr.\n\n# File Description:\n\n# Packages:\n\nrequire(drc)\n\n# Function\n\nMeasureIdent <- function(subj, block, sess){\n  d <- ident.data[which(ident.data$subj==subj & ident.data$block==block & ident.data$session==sess),]\n  steps <- sort(unique(d$stimulus[which(d$session==sess)]))\n  interpolated_steps <- approx(steps, n=200)\n  \n  # create data frame of interpolated responses \n  new_d = data.frame(approx(with(d[which(d$session==sess),], tapply(response, stimulus, mean)), n=200))\n  new_d$stimulus <- interpolated_steps$y\n  \n  return(cbind(new_d$y, new_d$stimulus))\n  # fitting 4-parameter log-logistic model\n  # Coefficients: b = slope, c = lower limit, d = upper limit, e = half-way between upper limit and lower limit\n  #model4 <- drm(y~stimulus, data=new_d, fct=LL.4())\n  \n  #return(model4$coefficients[[4]])\n}",
+    "created" : 1416831940868.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2072639684",
+    "id" : "B7EB3126",
+    "lastKnownWriteTime" : 1416835351,
+    "path" : "U:/Projects/git_projects/see_she_expr/see_she_expr_analysis_1/measure_identification_boundary.R",
+    "project_path" : "measure_identification_boundary.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

@@ -1,0 +1,16 @@
+{
+    "contents" : "# Plot Identification Boundary\n\nPlotIdent <- function(subj, block = 1){\n  par(mfrow=c(2,2), oma=c(0,0,3,0))\n  d <- ident.data[which(ident.data$subj==subj & ident.data$block==block),]\n  steps <- sort(unique(d$stimulus[which(d$session==\"NoPert\")]))\n  interpolated_steps <- approx(steps, n=200)\n\n  # plot original and interpolated responses\n  plot(with(d[which(d$session==\"NoPert\"),], tapply(response, stimulus, mean)), ylab=\"response\", xaxt='n', main = \"No Pert\")\n  points(approx(with(d[which(d$session==\"NoPert\"),], tapply(response, stimulus, mean)), n=200), pch=\"*\", col =2)\n  axis(side=1, at=c(1:length(with(d[which(d$session==\"NoPert\"),], tapply(response, stimulus, mean)))),labels=steps)\n\n  # insert main plot title\n  mtext(paste(paste(\"Participant\", subj), paste(\"Block\", block)), outer=TRUE, cex=1.5)\n  \n  # create data frame of interpolated responses \n  new_d = data.frame(approx(with(d[which(d$session==\"NoPert\"),], tapply(response, stimulus, mean)), n=200))\n  new_d$stimulus <- interpolated_steps$y\n  \n  # fitting 4-parameter log-logistic model\n  # Coefficients: b = slope, c = lower limit, d = upper limit, e = half-way between upper limit and lower limit\n  model4 <- drm(y~stimulus, data=new_d, fct=LL.4())\n  \n  plot(predict(model4),xaxt='n', ylim=c(0,1), main = round(model4$coefficients[4]))\n  axis(side=1, at=c(1:200),labels=round(new_d$stimulus))\n  abline(0.5, 0, lty='dashed')\n  \n\n  ## yes pert \n  steps <- sort(unique(d$stimulus[which(d$session==\"YesPert\")]))\n  interpolated_steps <- approx(steps, n=200)\n  \n  # plot original and interpolated responses\n  plot(with(d[which(d$session==\"YesPert\"),], tapply(response, stimulus, mean)), ylab=\"response\", xaxt='n', main = \"Yes Pert\")\n  points(approx(with(d[which(d$session==\"YesPert\"),], tapply(response, stimulus, mean)), n=200), pch=\"*\", col =2)\n  axis(side=1, at=c(1:length(with(d[which(d$session==\"YesPert\"),], tapply(response, stimulus, mean)))),labels=steps)\n  \n  # create data frame of interpolated responses \n  new_d = data.frame(approx(with(d[which(d$session==\"YesPert\"),], tapply(response, stimulus, mean)), n=200))\n  new_d$stimulus <- interpolated_steps$y\n  \n  # fitting 4-parameter log-logistic model\n  # Coefficients: b = slope, c = lower limit, d = upper limit, e = half-way between upper limit and lower limit\n  model4 <- drm(y~stimulus, data=new_d, fct=LL.4())\n  \n  plot(predict(model4),xaxt='n', ylim=c(0,1), main = round(model4$coefficients[4]))\n  axis(side=1, at=c(1:200),labels=round(new_d$stimulus))\n  abline(0.5, 0, lty='dashed')\n}\n\n  ",
+    "created" : 1419439967798.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3152852460",
+    "id" : "FCCF912A",
+    "lastKnownWriteTime" : 1419470395,
+    "path" : "~/Documents/Git/sample_expr/PlotIdent.R",
+    "project_path" : "PlotIdent.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
