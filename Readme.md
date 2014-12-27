@@ -43,5 +43,3 @@ The graph below contrasts performance in "Block 4" of each session. The first co
 
 These results suggest that, for this participant, there was no effect of altered auditory feedback on the interwoven identification tasks. 
 
-require(knitr)
-knit2html("sample_expr_readme.Rmd")
