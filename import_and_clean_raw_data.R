@@ -5,6 +5,7 @@
 # Packages 
 
 require(plyr)
+require(drc)
 
 # Read in production data 
 text.files.production <- dir("Production_data/")

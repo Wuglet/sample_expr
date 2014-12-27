@@ -27,11 +27,15 @@ The large circles indicate the proportion of "she" responses obtained during the
 
 In the first (unaltered feedback) session, input and output are identical throughout the experiment.
 
-![plot of chunk unnamed-chunk-1](figure/unnamed-chunk-1-1.png) 
+```{r, echo=FALSE}
+PlotBuffers(sess="NoPert")
+```
 
 In the second (altered feedback) session, the first frequency is shifted upwards (higher than normal) and the second frequency is shifted downwards (lower than normal). Decreasing the dispersion between these two frequencies results in a vowel that sounds more rounded and farther back in the vowelspace than the speaker intended. 
 
-![plot of chunk unnamed-chunk-2](figure/unnamed-chunk-2-1.png) 
+```{r, echo=FALSE}
+PlotBuffers(sess="YesPert")
+```
 
 These graphs show that in the first session, the participant experienced a steady decrease in the number of stimuli perceived as "she." In the second session, the proportion of "she" responses remains relatively stable. 
 
@@ -39,7 +43,9 @@ Another method of comparing performance in the two sessions is to determine the 
 
 The graph below contrasts performance in "Block 4" of each session. The first column shows the participant's responses to each stimulus, indicated by the black circles. Red asterisks represent linearly interpolated data points between the participant's responses. The second column shows the results of fitting a sigmoid-curve to the interpolated responses. The dotted line indicates the 50% response point, i.e. the stimulus number at which the participant stopped hearing "see" and started hearing "she".
 
-![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
+```{r, echo=FALSE}
+PlotIdent(1,4)
+```
 
 These results suggest that, for this participant, there was no effect of altered auditory feedback on the interwoven identification tasks. 
 

@@ -18,7 +18,11 @@ PlotBuffers <- function(data=prod.data, subject = "1", sess = "NoPert", plotbuff
   block.size= max(d$trial)/max(d$block)
   #create plots with baselines
   if(plotbuff==TRUE){
-    plot(c(1,max(d$trial)), c(0, 3500), type='n', xlab="trial", ylab="frequency", main=sess)
+    if(sess=="NoPert"){
+      plot(c(1,max(d$trial)), c(0, 3500), type='n', xlab="trial", ylab="frequency", main="Unaltered Feedback")
+    }else{
+      plot(c(1,max(d$trial)), c(0, 3500), type='n', xlab="trial", ylab="frequency", main="Altered Feedback")
+    }
     points(d$trial, d[,'in.f1.50'], col='red')
     points(d$trial, d[,'in.f2.50'], col = 'red', pch=3)
     abline(h=f1Baseline)

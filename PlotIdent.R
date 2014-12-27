@@ -7,7 +7,7 @@ PlotIdent <- function(subj, block = 1){
   interpolated_steps <- approx(steps, n=200)
 
   # plot original and interpolated responses
-  plot(with(d[which(d$session=="NoPert"),], tapply(response, stimulus, mean)), ylab="response", xaxt='n', main = "No Pert")
+  plot(with(d[which(d$session=="NoPert"),], tapply(response, stimulus, mean)), ylab="response", xaxt='n', main = "Unaltered Feedback")
   points(approx(with(d[which(d$session=="NoPert"),], tapply(response, stimulus, mean)), n=200), pch="*", col =2)
   axis(side=1, at=c(1:length(with(d[which(d$session=="NoPert"),], tapply(response, stimulus, mean)))),labels=steps)
 
@@ -32,7 +32,7 @@ PlotIdent <- function(subj, block = 1){
   interpolated_steps <- approx(steps, n=200)
   
   # plot original and interpolated responses
-  plot(with(d[which(d$session=="YesPert"),], tapply(response, stimulus, mean)), ylab="response", xaxt='n', main = "Yes Pert")
+  plot(with(d[which(d$session=="YesPert"),], tapply(response, stimulus, mean)), ylab="response", xaxt='n', main = "Altered Feedback")
   points(approx(with(d[which(d$session=="YesPert"),], tapply(response, stimulus, mean)), n=200), pch="*", col =2)
   axis(side=1, at=c(1:length(with(d[which(d$session=="YesPert"),], tapply(response, stimulus, mean)))),labels=steps)
   
