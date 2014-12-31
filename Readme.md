@@ -49,5 +49,5 @@ The graph below contrasts performance in "Block 4" of each session. The first co
 
 ![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png) 
 
-This suggest a very small difference in the boundary due to the different sessions. However, without more participants, it is not possible to determine anything conclusive about the hypothesis. 
+This suggest that there may be a very small difference in the boundary in the different sessions. However, without more participants, it is not possible to determine whether this change in the boundary is the result of normal variation or can be attributed confidently to the altered auditory feedback. 
 
